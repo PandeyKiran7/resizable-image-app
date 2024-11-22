@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { ResizableBox } from 'react-resizable';
 import 'react-resizable/css/styles.css';
 import { Box } from '@mui/material';
-import image from "../assets/bottomLeftImage.png";
-
+import image from "../assets/bottomLeftImage.png";  
 const ResizableImage = () => {
-  const [width, setWidth] = useState(250); // Default width smaller
-  const [height, setHeight] = useState(350); // Default height larger
+  const [width, setWidth] = useState(250); 
+  const [height, setHeight] = useState(350); 
 
   const handleResize = (e, data) => {
     setWidth(data.size.width);
@@ -22,7 +21,7 @@ const ResizableImage = () => {
         alignItems: 'center',
         width: '100vw',
         height: '100vh',
-        backgroundColor: 'background.default', // Theme background
+        backgroundColor: 'transparent', 
       }}
     >
       <ResizableBox
@@ -31,6 +30,7 @@ const ResizableImage = () => {
         minConstraints={[100, 100]}
         maxConstraints={[600, 600]}
         axis="both"
+        lockAspectRatio={true} 
         resizeHandles={['se', 'ne', 'sw', 'nw']}
         onResize={handleResize}
         style={{
@@ -43,19 +43,20 @@ const ResizableImage = () => {
           style={{
             width: '100%',
             height: '100%',
-            objectFit: 'cover',
+            objectFit: 'contain', 
             borderRadius: '10px',
+            backgroundColor: 'transparent', 
           }}
         />
       </ResizableBox>
       <style>
         {`
           .react-resizable-handle {
-            width: 16px; /* Smaller size */
-            height: 16px; /* Smaller size */
+            width: 16px; 
+            height: 16px; 
             border-radius: 50%;
-            background-color: white; /* White color */
-            border: 2px solid #1976d2; /* Primary blue */
+            background-color: white; 
+            border: 2px solid #1976d2;
           }
           .react-resizable-handle:hover {
             cursor: pointer;
