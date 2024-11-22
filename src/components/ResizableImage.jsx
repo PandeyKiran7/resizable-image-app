@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ResizableBox } from 'react-resizable';
 import 'react-resizable/css/styles.css';
 import { Box } from '@mui/material';
-import image from "../assets/bottomLeftImage.png";  
+import image from "../assets/image.png"  
 const ResizableImage = () => {
   const [width, setWidth] = useState(250); 
   const [height, setHeight] = useState(350); 
@@ -35,6 +35,7 @@ const ResizableImage = () => {
         onResize={handleResize}
         style={{
           boxSizing: 'border-box',
+          border:'1px solid grey'
         }}
       >
         <img
@@ -48,6 +49,7 @@ const ResizableImage = () => {
             backgroundColor: 'transparent', 
           }}
         />
+        
       </ResizableBox>
       <style>
         {`
