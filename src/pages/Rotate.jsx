@@ -1,31 +1,36 @@
 import React, { useState } from "react";
 
-const Rotate = ({ handleRotate }) => {
-  const [isRotatingRight, setIsRotatingRight] = useState(true);
+const Rotate = ({ handleRotate, rotation }) => {
+  const [angle, setAngle] = useState(rotation);
 
-  const toggleRotation = () => {
-    setIsRotatingRight(!isRotatingRight);
-    handleRotate(isRotatingRight ? "right" : "left");
+  const handleSliderChange = (e) => {
+    const newAngle = parseInt(e.target.value);
+    setAngle(newAngle);
+    handleRotate(newAngle); 
   };
 
   return (
-    <div style={{ position: "absolute", top: "20px", left: "50%", transform: "translateX(-50%)", zIndex: 10 }}>
-      <button onClick={toggleRotation} style={buttonStyle}>
-        Rotate
-      </button>
+    <div style={{ position: "absolute", top: "20px", left: "50%", transform: "translateX(-30%)", zIndex: 10 }}>
+      <div style={{ marginTop: "10px" }}>
+        <label>Set Rotation Angle:</label>
+        <input
+          type="range"
+          min="0"
+          max="360"
+          step="1"
+          value={angle}
+          onChange={handleSliderChange}
+          style={sliderStyle}
+        />
+        <span style={{ marginLeft: "10px" }}>{angle}°</span>
+      </div>
     </div>
   );
 };
 
-const buttonStyle = {
-  padding: "8px 16px",
-  fontSize: "16px",
-  backgroundColor: "#1976d2",
-  color: "#fff",
-  border: "none",
-  cursor: "pointer",
-  borderRadius: "4px",
-  margin: "0 5px",
+const sliderStyle = {
+  width: "200px",
+  margin: "10px 0",
 };
 
 export default Rotate;

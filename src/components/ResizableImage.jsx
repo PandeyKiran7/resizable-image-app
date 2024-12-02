@@ -1,16 +1,16 @@
 import React, { useState, useRef } from "react";
 import { Box } from "@mui/material";
 import image from "../assets/image.png";
-import Rotate from "../pages/Rotate";
+import Rotate from "../pages/Rotate"; 
 import Resize from "../pages/Resize";
 
 const ResizableRotatableImage = () => {
   const [size, setSize] = useState({ width: 250, height: 350 });
-  const [rotation, setRotation] = useState(0); // Rotation in degrees
-  const boxRef = useRef(null); // Reference to the resizable box
+  const [rotation, setRotation] = useState(0); 
+  const boxRef = useRef(null); 
 
   const handleRotate = (direction) => {
-    setRotation((prev) => prev + (direction === "right" ? 15 : -15)); // Rotate in 15-degree increments
+    setRotation((prev) => prev + (direction === "right" ? 15 : -15)); 
   };
 
   return (
@@ -44,16 +44,16 @@ const ResizableRotatableImage = () => {
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            pointerEvents: "none", // Prevent interaction during rotation/resizing
+            pointerEvents: "none", 
           }}
         />
 
-        {/* Resizable Corners */}
+
         <Resize size={size} setSize={setSize} boxRef={boxRef} />
       </div>
 
-      {/* Rotate Buttons */}
-      <Rotate handleRotate={handleRotate} />
+ 
+      <Rotate handleRotate={handleRotate} /> 
     </Box>
   );
 };
